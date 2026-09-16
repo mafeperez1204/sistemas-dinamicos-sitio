@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sistemas Dinámicos · Sistemas Dinámicos</title>
+<meta name="description" content="Sitio del curso Sistemas Dinámicos — Ingeniería Electrónica. Ecuaciones diferenciales, funciones de transferencia, diagramas de bloques, espacio de estados y proyecto final Robogol.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link rel="icon" href="./assets/img/usco-shield.png" type="image/png">
+<link rel="stylesheet" href="./css/style.css">
+<script>
+  window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] } };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
+</head>
+<body class="">
+<a class="skip-link" href="#contenido">Saltar al contenido</a>
+<header class="site-header">
+  <div class="nav-bar">
+    <a class="brand" href="./index.html">
+      <img src="./assets/img/usco-shield.png" alt="Universidad Surcolombiana">
+      <span>Sistemas Dinámicos<small>Ingeniería Electrónica</small></span>
+    </a>
+    <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false">☰ Menú</button>
+    <nav class="primary-nav" aria-label="Navegación principal">
+      <ul>
+        <li><a class="top-link" href="./index.html">Inicio</a></li>
+        <li class="has-mega">
+          <a class="top-link" href="./index.html#contenido">Contenido ▾</a>
+          <div class="mega-panel"><div class="mega-grid"><div class="mega-col"><h4><img class="mega-icon" src="./assets/img/icon-ode.svg" alt=""> Ecuaciones Diferenciales</h4><ul><li><a href="./pages/ecuaciones_presentacion.html">Presentación</a></li><li><a href="./pages/ecuaciones_laboratorio.html">Laboratorio</a></li><li><a href="./pages/ecuaciones_leccion.html">Lección</a></li><li><a href="./pages/ecuaciones_bibliografia.html">Bibliografía</a></li></ul></div><div class="mega-col"><h4><img class="mega-icon" src="./assets/img/icon-tf.svg" alt=""> Funciones de Transferencia</h4><ul><li><a href="./pages/transferencia_presentacion.html">Presentación</a></li><li><a href="./pages/transferencia_laboratorio.html">Laboratorio</a></li><li><a href="./pages/transferencia_leccion.html">Lección</a></li><li><a href="./pages/transferencia_bibliografia.html">Bibliografía</a></li></ul></div><div class="mega-col"><h4><img class="mega-icon" src="./assets/img/icon-blocks.svg" alt=""> Diagramas de Bloques</h4><ul><li><a href="./pages/bloques_presentacion.html">Presentación</a></li><li><a href="./pages/bloques_laboratorio.html">Laboratorio</a></li><li><a href="./pages/bloques_leccion.html">Lección</a></li><li><a href="./pages/bloques_bibliografia.html">Bibliografía</a></li></ul></div><div class="mega-col"><h4><img class="mega-icon" src="./assets/img/icon-ss.svg" alt=""> Espacio de Estados</h4><ul><li><a href="./pages/espacio_presentacion.html">Presentación</a></li><li><a href="./pages/espacio_laboratorio.html">Laboratorio</a></li><li><a href="./pages/espacio_leccion.html">Lección</a></li><li><a href="./pages/espacio_bibliografia.html">Bibliografía</a></li></ul></div><div class="mega-col"><h4><img class="mega-icon" src="./assets/img/icon-cdio.svg" alt=""> Proyecto CDIO · Robogol</h4><ul><li><a href="./pages/cdio_presentacion.html">Presentación</a></li><li><a href="./pages/cdio_etapas.html">Etapas CDIO</a></li><li><a href="./pages/cdio_cronograma.html">Cronograma</a></li><li><a href="./pages/cdio_reglamento.html">Reglamento</a></li><li><a href="./pages/cdio_bibliografia.html">Bibliografía</a></li></ul></div></div></div>
+        </li>
+        <li><a class="top-link" href="./index.html#recursos">Recursos</a></li>
+        <li><a class="top-link" href="./index.html#creditos">Créditos</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="container">
+    <div class="hero-text">
+      <p class="eyebrow">CURSO · INGENIERÍA ELECTRÓNICA</p>
+      <h1>Sistemas Dinámicos</h1>
+      <p class="lead">Todo sistema físico —un motor, un circuito, un robot que persigue un
+      balón— cuenta la misma historia: cómo cambia en el tiempo. Este curso enseña a leer esa
+      historia en cuatro lenguajes equivalentes —la ecuación diferencial, la función de
+      transferencia, el diagrama de bloques y el espacio de estados— y a ponerla a prueba con
+      MATLAB, Simulink y, al final, con un robot real en la cancha de Robogol.</p>
+      <p class="hero-quote">«Las matemáticas son el lenguaje con el que Dios ha escrito el
+      universo.»<cite>— Galileo Galilei</cite></p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="#contenido">Ver unidades</a>
+        <a class="btn btn-outline" href="#recursos">Descargar guías</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <img src="assets/img/hero-scope.svg" alt="Curva de respuesta de un sistema dinámico de segundo orden">
+    </div>
+  </div>
+</div>
+
+<section class="section" id="presentacion-curso">
+  <div class="container">
+    <p class="eyebrow">PRESENTACIÓN DEL CURSO</p>
+    <h2>De la ecuación al comportamiento del sistema</h2>
+    <p class="section-intro">Sistemas Dinámicos estudia cómo describir, matematicamente y en
+    software, el comportamiento en el tiempo de sistemas físicos —mecánicos, eléctricos y
+    electromecánicos— que aparecen constantemente en la ingeniería electrónica: desde un sensor
+    con su circuito de acondicionamiento hasta un robot móvil con su sistema de control. El curso
+    avanza por cuatro representaciones equivalentes de un mismo sistema: la ecuación diferencial,
+    la función de transferencia, el diagrama de bloques y el espacio de estados, siempre validadas
+    con simulación en MATLAB y Simulink.</p>
+    <p class="section-intro"><strong>Justificación.</strong> La necesidad de anticipar el
+    comportamiento de un sistema antes de construirlo —y de diseñar la forma de controlarlo— obliga
+    a contar con herramientas de modelado rigurosas y con software capaz de simular ese modelo
+    rápidamente. Estas cuatro representaciones son, hoy, la base común de cualquier proceso de
+    análisis y diseño de sistemas de control.</p>
+  </div>
+</section>
+
+<section class="section section-alt" id="contenido">
+  <div class="container">
+    <p class="eyebrow">CONTENIDO DEL CURSO</p>
+    <h2>Unidades temáticas</h2>
+    <p class="section-intro">Cada unidad incluye una presentación, un laboratorio guiado con
+    ejemplos resueltos, una lección de repaso teórico y su bibliografía. El proyecto final integra
+    todo lo anterior en la construcción de un robot real.</p>
+    <div class="topics-grid"><article class="topic-card">
+  <img class="card-icon" src="./assets/img/icon-ode.svg" alt="">
+  <h3>Ecuaciones Diferenciales</h3>
+  <p>Modelado de sistemas de primer y segundo orden mediante ecuaciones diferenciales.</p>
+  <div class="card-links"><a href="./pages/ecuaciones_presentacion.html">Presentación</a><a href="./pages/ecuaciones_laboratorio.html">Laboratorio</a><a href="./pages/ecuaciones_leccion.html">Lección</a><a href="./pages/ecuaciones_bibliografia.html">Bibliografía</a></div>
+</article><article class="topic-card">
+  <img class="card-icon" src="./assets/img/icon-tf.svg" alt="">
+  <h3>Funciones de Transferencia</h3>
+  <p>Representación entrada-salida de sistemas mecánicos SISO y MIMO en el dominio de Laplace.</p>
+  <div class="card-links"><a href="./pages/transferencia_presentacion.html">Presentación</a><a href="./pages/transferencia_laboratorio.html">Laboratorio</a><a href="./pages/transferencia_leccion.html">Lección</a><a href="./pages/transferencia_bibliografia.html">Bibliografía</a></div>
+</article><article class="topic-card">
+  <img class="card-icon" src="./assets/img/icon-blocks.svg" alt="">
+  <h3>Diagramas de Bloques</h3>
+  <p>Construcción y simulación de sistemas eléctricos mediante diagramas de bloques en Simulink.</p>
+  <div class="card-links"><a href="./pages/bloques_presentacion.html">Presentación</a><a href="./pages/bloques_laboratorio.html">Laboratorio</a><a href="./pages/bloques_leccion.html">Lección</a><a href="./pages/bloques_bibliografia.html">Bibliografía</a></div>
+</article><article class="topic-card">
+  <img class="card-icon" src="./assets/img/icon-ss.svg" alt="">
+  <h3>Espacio de Estados</h3>
+  <p>Representación matricial de sistemas dinámicos y su equivalencia con funciones de transferencia.</p>
+  <div class="card-links"><a href="./pages/espacio_presentacion.html">Presentación</a><a href="./pages/espacio_laboratorio.html">Laboratorio</a><a href="./pages/espacio_leccion.html">Lección</a><a href="./pages/espacio_bibliografia.html">Bibliografía</a></div>
+</article><article class="topic-card">
+  <img class="card-icon" src="./assets/img/icon-cdio.svg" alt="">
+  <h3>Proyecto CDIO · Robogol</h3>
+  <p>Concebir, Diseñar, Implementar y Operar un robot para la competencia Robogol.</p>
+  <div class="card-links"><a href="./pages/cdio_presentacion.html">Presentación</a><a href="./pages/cdio_etapas.html">Etapas CDIO</a><a href="./pages/cdio_cronograma.html">Cronograma</a><a href="./pages/cdio_reglamento.html">Reglamento</a><a href="./pages/cdio_bibliografia.html">Bibliografía</a></div>
+</article></div>
+  </div>
+</section>
+
+<section class="section" id="competencias">
+  <div class="container">
+    <p class="eyebrow">RESULTADOS DE APRENDIZAJE</p>
+    <h2>Competencias del curso</h2>
+    <ul class="competencias-list">
+      <li>Formular y resolver problemas de ingeniería aplicando principios de matemáticas y
+      ciencias básicas al modelado de sistemas dinámicos.</li>
+      <li>Aplicar el diseño de ingeniería para construir soluciones que cumplan requisitos
+      técnicos concretos, considerando seguridad y viabilidad de fabricación.</li>
+      <li>Comunicar de forma efectiva resultados técnicos, tanto por escrito como en
+      presentaciones orales ante distintas audiencias.</li>
+      <li>Reconocer responsabilidades éticas y profesionales al tomar decisiones de diseño e
+      implementación.</li>
+      <li>Trabajar de forma efectiva en equipo, distribuyendo roles, planificando tareas y
+      cumpliendo objetivos comunes.</li>
+      <li>Diseñar y realizar experimentos y simulaciones, interpretar sus resultados y usarlos
+      para sustentar decisiones de ingeniería.</li>
+      <li>Adquirir y aplicar nuevas herramientas de software y de hardware según lo requiera cada
+      etapa del proyecto.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section section-alt" id="recursos">
+  <div class="container">
+    <p class="eyebrow">MATERIAL DESCARGABLE</p>
+    <h2>Recursos del curso</h2>
+    <p class="section-intro">Guías completas en PDF, disponibles también dentro de cada unidad.</p>
+<div class="download-card">
+  <div>
+    <strong>Lab 01 · Ecuaciones diferenciales en MATLAB</strong><br>
+    <span class="file-meta">PDF · Guía de laboratorio</span>
+  </div>
+  <a class="btn btn-primary" href="recursos/Lab_01.pdf" download>Descargar PDF</a>
+</div><div class="download-card">
+  <div>
+    <strong>Lab 02 · Funciones de transferencia y sistemas mecánicos</strong><br>
+    <span class="file-meta">PDF · Guía de laboratorio</span>
+  </div>
+  <a class="btn btn-primary" href="recursos/Lab_02.pdf" download>Descargar PDF</a>
+</div><div class="download-card">
+  <div>
+    <strong>Lab 03 · Diagramas de bloques y sistemas eléctricos</strong><br>
+    <span class="file-meta">PDF · Guía de laboratorio</span>
+  </div>
+  <a class="btn btn-primary" href="recursos/Lab_03.pdf" download>Descargar PDF</a>
+</div><div class="download-card">
+  <div>
+    <strong>Lab 04 · Espacio de estados en MATLAB</strong><br>
+    <span class="file-meta">PDF · Guía de laboratorio</span>
+  </div>
+  <a class="btn btn-primary" href="recursos/Lab_04.pdf" download>Descargar PDF</a>
+</div><div class="download-card">
+  <div>
+    <strong>Guía de Proyecto Final · Robogol CDIO</strong><br>
+    <span class="file-meta">PDF · Guía del proyecto</span>
+  </div>
+  <a class="btn btn-primary" href="recursos/Guia_Proyecto_Final_Robogol_CDIO.pdf" download>Descargar PDF</a>
+</div><div class="download-card">
+  <div>
+    <strong>Reglamento Robogol</strong><br>
+    <span class="file-meta">PDF · Reglas oficiales de la competencia</span>
+  </div>
+  <a class="btn btn-primary" href="recursos/Reglamento_Robogol.pdf" download>Descargar PDF</a>
+</div>
+  </div>
+</section>
+
+<footer class="site-footer" id="creditos">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <img class="footer-logo" src="./assets/img/usco-logo-full.png" alt="Universidad Surcolombiana" loading="lazy">
+        <h5>Sistemas Dinámicos</h5>
+        <p>Sitio del curso, elaborado por estudiantes del programa de Ingeniería Electrónica como
+        proyecto final de la asignatura. Contenido con fines académicos.</p>
+      </div>
+      <div>
+        <h5>Unidades</h5>
+        <ul><li><a href="./pages/ecuaciones_presentacion.html">Ecuaciones Diferenciales</a></li><li><a href="./pages/transferencia_presentacion.html">Funciones de Transferencia</a></li><li><a href="./pages/bloques_presentacion.html">Diagramas de Bloques</a></li><li><a href="./pages/espacio_presentacion.html">Espacio de Estados</a></li><li><a href="./pages/cdio_presentacion.html">Proyecto CDIO · Robogol</a></li></ul>
+      </div>
+      <div>
+        <h5>Sitio</h5>
+        <ul>
+          <li><a href="./index.html">Inicio</a></li>
+          <li><a href="./index.html#recursos">Recursos descargables</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      Programa de Ingeniería Electrónica · Curso Sistemas Dinámicos · Proyecto de sitio web de curso.
+    </div>
+  </div>
+</footer>
+<script src="./js/script.js"></script>
+</body>
+</html>

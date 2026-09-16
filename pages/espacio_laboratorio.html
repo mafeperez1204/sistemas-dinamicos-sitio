@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Laboratorio · Espacio de Estados · Sistemas Dinámicos</title>
+<meta name="description" content="Laboratorio — Representación matricial de sistemas dinámicos y su equivalencia con funciones de transferencia.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link rel="icon" href="../assets/img/usco-shield.png" type="image/png">
+<link rel="stylesheet" href="../css/style.css">
+<script>
+  window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] } };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
+</head>
+<body class="">
+<a class="skip-link" href="#contenido">Saltar al contenido</a>
+<header class="site-header">
+  <div class="nav-bar">
+    <a class="brand" href="../index.html">
+      <img src="../assets/img/usco-shield.png" alt="Universidad Surcolombiana">
+      <span>Sistemas Dinámicos<small>Ingeniería Electrónica</small></span>
+    </a>
+    <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false">☰ Menú</button>
+    <nav class="primary-nav" aria-label="Navegación principal">
+      <ul>
+        <li><a class="top-link" href="../index.html">Inicio</a></li>
+        <li class="has-mega">
+          <a class="top-link" href="../index.html#contenido">Contenido ▾</a>
+          <div class="mega-panel"><div class="mega-grid"><div class="mega-col"><h4><img class="mega-icon" src="../assets/img/icon-ode.svg" alt=""> Ecuaciones Diferenciales</h4><ul><li><a href="../pages/ecuaciones_presentacion.html">Presentación</a></li><li><a href="../pages/ecuaciones_laboratorio.html">Laboratorio</a></li><li><a href="../pages/ecuaciones_leccion.html">Lección</a></li><li><a href="../pages/ecuaciones_bibliografia.html">Bibliografía</a></li></ul></div><div class="mega-col"><h4><img class="mega-icon" src="../assets/img/icon-tf.svg" alt=""> Funciones de Transferencia</h4><ul><li><a href="../pages/transferencia_presentacion.html">Presentación</a></li><li><a href="../pages/transferencia_laboratorio.html">Laboratorio</a></li><li><a href="../pages/transferencia_leccion.html">Lección</a></li><li><a href="../pages/transferencia_bibliografia.html">Bibliografía</a></li></ul></div><div class="mega-col"><h4><img class="mega-icon" src="../assets/img/icon-blocks.svg" alt=""> Diagramas de Bloques</h4><ul><li><a href="../pages/bloques_presentacion.html">Presentación</a></li><li><a href="../pages/bloques_laboratorio.html">Laboratorio</a></li><li><a href="../pages/bloques_leccion.html">Lección</a></li><li><a href="../pages/bloques_bibliografia.html">Bibliografía</a></li></ul></div><div class="mega-col"><h4><img class="mega-icon" src="../assets/img/icon-ss.svg" alt=""> Espacio de Estados</h4><ul><li><a href="../pages/espacio_presentacion.html">Presentación</a></li><li><a href="../pages/espacio_laboratorio.html">Laboratorio</a></li><li><a href="../pages/espacio_leccion.html">Lección</a></li><li><a href="../pages/espacio_bibliografia.html">Bibliografía</a></li></ul></div><div class="mega-col"><h4><img class="mega-icon" src="../assets/img/icon-cdio.svg" alt=""> Proyecto CDIO · Robogol</h4><ul><li><a href="../pages/cdio_presentacion.html">Presentación</a></li><li><a href="../pages/cdio_etapas.html">Etapas CDIO</a></li><li><a href="../pages/cdio_cronograma.html">Cronograma</a></li><li><a href="../pages/cdio_reglamento.html">Reglamento</a></li><li><a href="../pages/cdio_bibliografia.html">Bibliografía</a></li></ul></div></div></div>
+        </li>
+        <li><a class="top-link" href="../index.html#recursos">Recursos</a></li>
+        <li><a class="top-link" href="../index.html#creditos">Créditos</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<div class="page-hero">
+  <div class="container">
+    <div class="breadcrumb"><a href="../index.html">Inicio</a> / <a href="../index.html#contenido">Contenido</a> / Laboratorio</div>
+    <h1>Espacio de Estados</h1>
+    <p>Representación matricial de sistemas dinámicos y su equivalencia con funciones de transferencia.</p>
+  </div>
+</div><nav class="subnav" aria-label="Secciones del tema"><ul><li><a class="" href="../pages/espacio_presentacion.html">Presentación</a></li><li><a class="active" href="../pages/espacio_laboratorio.html">Laboratorio</a></li><li><a class="" href="../pages/espacio_leccion.html">Lección</a></li><li><a class="" href="../pages/espacio_bibliografia.html">Bibliografía</a></li></ul></nav><main class="content-wrap" id="contenido">
+<p class="eyebrow">LABORATORIO 4</p>
+<h2>Representación de sistemas en espacio de estados</h2>
+
+<h3>Sistema mecánico de dos grados de libertad</h3>
+<p>Para un sistema con dos masas acopladas, las ecuaciones de movimiento son:</p>
+<div class="formula-box">
+$$\tfrac{1}{2}\ddot{x}_1 + 10x_1 - 5(x_2-x_1) - 0.8(\dot{x}_2-\dot{x}_1) = F_1$$
+$$\ddot{x}_2 + 5(x_2-x_1) + 0.8(\dot{x}_2-\dot{x}_1) = F_2$$
+</div>
+<p>Al tratarse de dos ecuaciones diferenciales de segundo orden, el sistema requiere cuatro
+condiciones iniciales, por lo que se definen cuatro variables de estado:</p>
+<div class="formula-box">
+$$x_1=x_1 \qquad x_2=x_2 \qquad x_3=\dot{x}_1 \qquad x_4=\dot{x}_2$$
+</div>
+
+<ol class="steps-list">
+  <li>Reescribir las ecuaciones de movimiento en función de las cuatro variables de estado, de
+  modo que cada derivada de estado quede expresada como combinación lineal de los estados y las
+  entradas $F_1$, $F_2$.</li>
+  <li>Ensamblar las matrices $\mathbf{A}$, $\mathbf{B}$, $\mathbf{C}$ y $\mathbf{D}$ de la
+  ecuación de estado $\dot{\mathbf{x}} = \mathbf{A}\mathbf{x} + \mathbf{B}\mathbf{u}$,
+  suponiendo que las salidas medidas son $x_1$ y $\dot{x}_1$.</li>
+  <li>Construir el modelo en MATLAB con <code>ss(A,B,C,D)</code>.</li>
+  <li>Convertir el modelo a función de transferencia con <code>ss2tf</code> o el objeto
+  <code>tf</code>, y verificar la equivalencia con lo visto en la unidad 2.</li>
+  <li>Simular la respuesta del sistema ante distintas entradas y condiciones iniciales.</li>
+</ol>
+
+<div class="callout"><strong>Tareas adicionales:</strong> la guía completa incluye ejercicios de
+conversión en ambos sentidos (espacio de estados ↔ función de transferencia) para sistemas de
+distinto orden, reforzando la equivalencia entre representaciones.</div>
+<div class="download-card">
+  <div>
+    <strong>Lab 04 · Espacio de estados en MATLAB</strong><br>
+    <span class="file-meta">PDF · Guía completa de laboratorio</span>
+  </div>
+  <a class="btn btn-primary" href="../recursos/Lab_04.pdf" download>Descargar PDF</a>
+</div></main>
+<footer class="site-footer" id="creditos">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <img class="footer-logo" src="../assets/img/usco-logo-full.png" alt="Universidad Surcolombiana" loading="lazy">
+        <h5>Sistemas Dinámicos</h5>
+        <p>Sitio del curso, elaborado por estudiantes del programa de Ingeniería Electrónica como
+        proyecto final de la asignatura. Contenido con fines académicos.</p>
+      </div>
+      <div>
+        <h5>Unidades</h5>
+        <ul><li><a href="../pages/ecuaciones_presentacion.html">Ecuaciones Diferenciales</a></li><li><a href="../pages/transferencia_presentacion.html">Funciones de Transferencia</a></li><li><a href="../pages/bloques_presentacion.html">Diagramas de Bloques</a></li><li><a href="../pages/espacio_presentacion.html">Espacio de Estados</a></li><li><a href="../pages/cdio_presentacion.html">Proyecto CDIO · Robogol</a></li></ul>
+      </div>
+      <div>
+        <h5>Sitio</h5>
+        <ul>
+          <li><a href="../index.html">Inicio</a></li>
+          <li><a href="../index.html#recursos">Recursos descargables</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      Programa de Ingeniería Electrónica · Curso Sistemas Dinámicos · Proyecto de sitio web de curso.
+    </div>
+  </div>
+</footer>
+<script src="../js/script.js"></script>
+</body>
+</html>

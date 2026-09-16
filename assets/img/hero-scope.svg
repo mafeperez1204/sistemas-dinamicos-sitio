@@ -1,0 +1,29 @@
+<svg viewBox="0 0 520 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Respuesta de un sistema dinámico de segundo orden">
+  <defs>
+    <linearGradient id="fade" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#B5232A" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#B5232A" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <rect x="0" y="0" width="520" height="360" rx="16" fill="#230809"/>
+  <g stroke="#591815" stroke-width="1">
+    <line x1="40" y1="40" x2="40" y2="300"/>
+    <line x1="40" y1="300" x2="480" y2="300"/>
+    <line x1="140" y1="40" x2="140" y2="300"/>
+    <line x1="240" y1="40" x2="240" y2="300"/>
+    <line x1="340" y1="40" x2="340" y2="300"/>
+    <line x1="440" y1="40" x2="440" y2="300"/>
+    <line x1="40" y1="110" x2="480" y2="110"/>
+    <line x1="40" y1="170" x2="480" y2="170"/>
+    <line x1="40" y1="230" x2="480" y2="230"/>
+  </g>
+  <line x1="40" y1="170" x2="480" y2="170" stroke="#6E3B37" stroke-width="1.4" stroke-dasharray="3 4"/>
+  <path d="M40,170 C 70,60 95,60 120,140 C 145,210 165,225 190,180 C 210,145 225,140 245,168 C 262,192 278,198 296,178 C 312,160 326,158 340,172 C 354,186 368,190 382,178 C 396,166 412,168 430,172 L 480,172"
+        fill="none" stroke="#B5232A" stroke-width="3.4" stroke-linecap="round"/>
+  <path d="M40,170 C 70,60 95,60 120,140 C 145,210 165,225 190,180 C 210,145 225,140 245,168 C 262,192 278,198 296,178 C 312,160 326,158 340,172 C 354,186 368,190 382,178 C 396,166 412,168 430,172 L 480,172 L480,300 L40,300 Z"
+        fill="url(#fade)" stroke="none"/>
+  <circle cx="120" cy="140" r="4" fill="#E7B740"/>
+  <circle cx="190" cy="180" r="4" fill="#E7B740"/>
+  <text x="454" y="318" font-family="'IBM Plex Mono', monospace" font-size="12" fill="#A5827E" text-anchor="end">t</text>
+  <text x="30" y="48" font-family="'IBM Plex Mono', monospace" font-size="12" fill="#A5827E" text-anchor="end">x(t)</text>
+</svg>

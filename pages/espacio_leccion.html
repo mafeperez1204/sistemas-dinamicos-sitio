@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lección · Espacio de Estados · Sistemas Dinámicos</title>
+<meta name="description" content="Lección — Representación matricial de sistemas dinámicos y su equivalencia con funciones de transferencia.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link rel="icon" href="../assets/img/usco-shield.png" type="image/png">
+<link rel="stylesheet" href="../css/style.css">
+<script>
+  window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] } };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
+</head>
+<body class="">
+<a class="skip-link" href="#contenido">Saltar al contenido</a>
+<header class="site-header">
+  <div class="nav-bar">
+    <a class="brand" href="../index.html">
+      <img src="../assets/img/usco-shield.png" alt="Universidad Surcolombiana">
+      <span>Sistemas Dinámicos<small>Ingeniería Electrónica</small></span>
+    </a>
+    <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false">☰ Menú</button>
+    <nav class="primary-nav" aria-label="Navegación principal">
+      <ul>
+        <li><a class="top-link" href="../index.html">Inicio</a></li>
+        <li class="has-mega">
+          <a class="top-link" href="../index.html#contenido">Contenido ▾</a>
+          <div class="mega-panel"><div class="mega-grid"><div class="mega-col"><h4><img class="mega-icon" src="../assets/img/icon-ode.svg" alt=""> Ecuaciones Diferenciales</h4><ul><li><a href="../pages/ecuaciones_presentacion.html">Presentación</a></li><li><a href="../pages/ecuaciones_laboratorio.html">Laboratorio</a></li><li><a href="../pages/ecuaciones_leccion.html">Lección</a></li><li><a href="../pages/ecuaciones_bibliografia.html">Bibliografía</a></li></ul></div><div class="mega-col"><h4><img class="mega-icon" src="../assets/img/icon-tf.svg" alt=""> Funciones de Transferencia</h4><ul><li><a href="../pages/transferencia_presentacion.html">Presentación</a></li><li><a href="../pages/transferencia_laboratorio.html">Laboratorio</a></li><li><a href="../pages/transferencia_leccion.html">Lección</a></li><li><a href="../pages/transferencia_bibliografia.html">Bibliografía</a></li></ul></div><div class="mega-col"><h4><img class="mega-icon" src="../assets/img/icon-blocks.svg" alt=""> Diagramas de Bloques</h4><ul><li><a href="../pages/bloques_presentacion.html">Presentación</a></li><li><a href="../pages/bloques_laboratorio.html">Laboratorio</a></li><li><a href="../pages/bloques_leccion.html">Lección</a></li><li><a href="../pages/bloques_bibliografia.html">Bibliografía</a></li></ul></div><div class="mega-col"><h4><img class="mega-icon" src="../assets/img/icon-ss.svg" alt=""> Espacio de Estados</h4><ul><li><a href="../pages/espacio_presentacion.html">Presentación</a></li><li><a href="../pages/espacio_laboratorio.html">Laboratorio</a></li><li><a href="../pages/espacio_leccion.html">Lección</a></li><li><a href="../pages/espacio_bibliografia.html">Bibliografía</a></li></ul></div><div class="mega-col"><h4><img class="mega-icon" src="../assets/img/icon-cdio.svg" alt=""> Proyecto CDIO · Robogol</h4><ul><li><a href="../pages/cdio_presentacion.html">Presentación</a></li><li><a href="../pages/cdio_etapas.html">Etapas CDIO</a></li><li><a href="../pages/cdio_cronograma.html">Cronograma</a></li><li><a href="../pages/cdio_reglamento.html">Reglamento</a></li><li><a href="../pages/cdio_bibliografia.html">Bibliografía</a></li></ul></div></div></div>
+        </li>
+        <li><a class="top-link" href="../index.html#recursos">Recursos</a></li>
+        <li><a class="top-link" href="../index.html#creditos">Créditos</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<div class="page-hero">
+  <div class="container">
+    <div class="breadcrumb"><a href="../index.html">Inicio</a> / <a href="../index.html#contenido">Contenido</a> / Lección</div>
+    <h1>Espacio de Estados</h1>
+    <p>Representación matricial de sistemas dinámicos y su equivalencia con funciones de transferencia.</p>
+  </div>
+</div><nav class="subnav" aria-label="Secciones del tema"><ul><li><a class="" href="../pages/espacio_presentacion.html">Presentación</a></li><li><a class="" href="../pages/espacio_laboratorio.html">Laboratorio</a></li><li><a class="active" href="../pages/espacio_leccion.html">Lección</a></li><li><a class="" href="../pages/espacio_bibliografia.html">Bibliografía</a></li></ul></nav><main class="content-wrap" id="contenido">
+<p class="eyebrow">LECCIÓN</p>
+<h2>La representación en espacio de estados</h2>
+<p>La forma general de un sistema lineal e invariante en el tiempo en espacio de estados es:</p>
+<div class="formula-box">
+$$\dot{\mathbf{x}} = \mathbf{A}\mathbf{x} + \mathbf{B}\mathbf{u}$$
+$$\mathbf{y} = \mathbf{C}\mathbf{x} + \mathbf{D}\mathbf{u}$$
+</div>
+<p>donde $\mathbf{x}$ es el vector de estados, $\mathbf{u}$ el vector de entradas, $\mathbf{y}$
+el vector de salidas, y $\mathbf{A}$, $\mathbf{B}$, $\mathbf{C}$, $\mathbf{D}$ son matrices
+constantes que describen la dinámica, la entrada, la salida y el acoplamiento directo,
+respectivamente.</p>
+
+<h3>Elección de variables de estado</h3>
+<p>Para un sistema descrito por ecuaciones diferenciales de orden $n$, se necesitan $n$ variables
+de estado, elegidas típicamente como la variable física y sus derivadas hasta el orden $n-1$. La
+elección no es única, pero debe garantizar que el conjunto de estados capture toda la información
+necesaria para predecir el comportamiento futuro del sistema.</p>
+
+<h3>Equivalencia con la función de transferencia</h3>
+<p>Toda representación en espacio de estados de un sistema SISO tiene una función de transferencia
+equivalente, y viceversa. En MATLAB, esta conversión se realiza con <code>ss2tf</code> y
+<code>tf2ss</code>, lo que permite pasar de una representación a otra según convenga para el
+análisis o el diseño.</p>
+
+<h3>Ventaja frente a la función de transferencia</h3>
+<p>A diferencia de la función de transferencia, el espacio de estados describe de forma natural
+sistemas con múltiples entradas y salidas (MIMO) y permite incorporar directamente las
+condiciones iniciales del sistema, por lo que es la representación preferida en el diseño de
+controladores modernos.</p>
+
+<div class="quiz-box">
+<p class="quiz-title">PON A PRUEBA LO APRENDIDO</p>
+<h4>Quiz rápido · Espacio de Estados</h4>
+
+<div class="quiz-question" data-answer="a" data-correct-msg="Correcto: A describe la dinámica interna del sistema." data-wrong-msg="No es correcta. Revisa la forma general $\dot{\mathbf{x}} = \mathbf{A}\mathbf{x} + \mathbf{B}\mathbf{u}$.">
+<p class="quiz-prompt">1. En la representación en espacio de estados, ¿qué describe la matriz $\mathbf{A}$?</p>
+<ul class="quiz-options">
+<li><button type="button" class="quiz-option" data-option="a">La dinámica interna del sistema</button></li>
+<li><button type="button" class="quiz-option" data-option="b">El acoplamiento directo entre entrada y salida</button></li>
+<li><button type="button" class="quiz-option" data-option="c">Solo las salidas del sistema</button></li>
+<li><button type="button" class="quiz-option" data-option="d">Las condiciones iniciales</button></li>
+</ul>
+<p class="quiz-feedback"></p>
+</div>
+
+<div class="quiz-question" data-answer="a" data-correct-msg="Correcto: se necesitan n variables de estado para un sistema de orden n." data-wrong-msg="No es correcta. Revisa «Elección de variables de estado».">
+<p class="quiz-prompt">2. Para un sistema descrito por una ecuación diferencial de orden $n$, ¿cuántas variables de estado se necesitan típicamente?</p>
+<ul class="quiz-options">
+<li><button type="button" class="quiz-option" data-option="a">$n$</button></li>
+<li><button type="button" class="quiz-option" data-option="b">$n+1$</button></li>
+<li><button type="button" class="quiz-option" data-option="c">$n-1$</button></li>
+<li><button type="button" class="quiz-option" data-option="d">$2n$</button></li>
+</ul>
+<p class="quiz-feedback"></p>
+</div>
+
+<div class="quiz-question" data-answer="a" data-correct-msg="Correcto: ss2tf convierte de espacio de estados a función de transferencia." data-wrong-msg="No es correcta. Revisa «Equivalencia con la función de transferencia».">
+<p class="quiz-prompt">3. ¿Qué comando de MATLAB convierte una representación en espacio de estados a función de transferencia?</p>
+<ul class="quiz-options">
+<li><button type="button" class="quiz-option" data-option="a"><code>ss2tf</code></button></li>
+<li><button type="button" class="quiz-option" data-option="b"><code>tf2ss</code></button></li>
+<li><button type="button" class="quiz-option" data-option="c"><code>dsolve</code></button></li>
+<li><button type="button" class="quiz-option" data-option="d"><code>laplace</code></button></li>
+</ul>
+<p class="quiz-feedback"></p>
+</div>
+</div>
+</main>
+<footer class="site-footer" id="creditos">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <img class="footer-logo" src="../assets/img/usco-logo-full.png" alt="Universidad Surcolombiana" loading="lazy">
+        <h5>Sistemas Dinámicos</h5>
+        <p>Sitio del curso, elaborado por estudiantes del programa de Ingeniería Electrónica como
+        proyecto final de la asignatura. Contenido con fines académicos.</p>
+      </div>
+      <div>
+        <h5>Unidades</h5>
+        <ul><li><a href="../pages/ecuaciones_presentacion.html">Ecuaciones Diferenciales</a></li><li><a href="../pages/transferencia_presentacion.html">Funciones de Transferencia</a></li><li><a href="../pages/bloques_presentacion.html">Diagramas de Bloques</a></li><li><a href="../pages/espacio_presentacion.html">Espacio de Estados</a></li><li><a href="../pages/cdio_presentacion.html">Proyecto CDIO · Robogol</a></li></ul>
+      </div>
+      <div>
+        <h5>Sitio</h5>
+        <ul>
+          <li><a href="../index.html">Inicio</a></li>
+          <li><a href="../index.html#recursos">Recursos descargables</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      Programa de Ingeniería Electrónica · Curso Sistemas Dinámicos · Proyecto de sitio web de curso.
+    </div>
+  </div>
+</footer>
+<script src="../js/script.js"></script>
+</body>
+</html>

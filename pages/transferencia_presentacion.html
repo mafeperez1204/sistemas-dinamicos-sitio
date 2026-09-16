@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Presentación · Funciones de Transferencia · Sistemas Dinámicos</title>
+<meta name="description" content="Presentación — Representación entrada-salida de sistemas mecánicos SISO y MIMO en el dominio de Laplace.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link rel="icon" href="../assets/img/usco-shield.png" type="image/png">
+<link rel="stylesheet" href="../css/style.css">
+
+</head>
+<body class="">
+<a class="skip-link" href="#contenido">Saltar al contenido</a>
+<header class="site-header">
+  <div class="nav-bar">
+    <a class="brand" href="../index.html">
+      <img src="../assets/img/usco-shield.png" alt="Universidad Surcolombiana">
+      <span>Sistemas Dinámicos<small>Ingeniería Electrónica</small></span>
+    </a>
+    <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false">☰ Menú</button>
+    <nav class="primary-nav" aria-label="Navegación principal">
+      <ul>
+        <li><a class="top-link" href="../index.html">Inicio</a></li>
+        <li class="has-mega">
+          <a class="top-link" href="../index.html#contenido">Contenido ▾</a>
+          <div class="mega-panel"><div class="mega-grid"><div class="mega-col"><h4><img class="mega-icon" src="../assets/img/icon-ode.svg" alt=""> Ecuaciones Diferenciales</h4><ul><li><a href="../pages/ecuaciones_presentacion.html">Presentación</a></li><li><a href="../pages/ecuaciones_laboratorio.html">Laboratorio</a></li><li><a href="../pages/ecuaciones_leccion.html">Lección</a></li><li><a href="../pages/ecuaciones_bibliografia.html">Bibliografía</a></li></ul></div><div class="mega-col"><h4><img class="mega-icon" src="../assets/img/icon-tf.svg" alt=""> Funciones de Transferencia</h4><ul><li><a href="../pages/transferencia_presentacion.html">Presentación</a></li><li><a href="../pages/transferencia_laboratorio.html">Laboratorio</a></li><li><a href="../pages/transferencia_leccion.html">Lección</a></li><li><a href="../pages/transferencia_bibliografia.html">Bibliografía</a></li></ul></div><div class="mega-col"><h4><img class="mega-icon" src="../assets/img/icon-blocks.svg" alt=""> Diagramas de Bloques</h4><ul><li><a href="../pages/bloques_presentacion.html">Presentación</a></li><li><a href="../pages/bloques_laboratorio.html">Laboratorio</a></li><li><a href="../pages/bloques_leccion.html">Lección</a></li><li><a href="../pages/bloques_bibliografia.html">Bibliografía</a></li></ul></div><div class="mega-col"><h4><img class="mega-icon" src="../assets/img/icon-ss.svg" alt=""> Espacio de Estados</h4><ul><li><a href="../pages/espacio_presentacion.html">Presentación</a></li><li><a href="../pages/espacio_laboratorio.html">Laboratorio</a></li><li><a href="../pages/espacio_leccion.html">Lección</a></li><li><a href="../pages/espacio_bibliografia.html">Bibliografía</a></li></ul></div><div class="mega-col"><h4><img class="mega-icon" src="../assets/img/icon-cdio.svg" alt=""> Proyecto CDIO · Robogol</h4><ul><li><a href="../pages/cdio_presentacion.html">Presentación</a></li><li><a href="../pages/cdio_etapas.html">Etapas CDIO</a></li><li><a href="../pages/cdio_cronograma.html">Cronograma</a></li><li><a href="../pages/cdio_reglamento.html">Reglamento</a></li><li><a href="../pages/cdio_bibliografia.html">Bibliografía</a></li></ul></div></div></div>
+        </li>
+        <li><a class="top-link" href="../index.html#recursos">Recursos</a></li>
+        <li><a class="top-link" href="../index.html#creditos">Créditos</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<div class="page-hero">
+  <div class="container">
+    <div class="breadcrumb"><a href="../index.html">Inicio</a> / <a href="../index.html#contenido">Contenido</a> / Presentación</div>
+    <h1>Funciones de Transferencia</h1>
+    <p>Representación entrada-salida de sistemas mecánicos SISO y MIMO en el dominio de Laplace.</p>
+  </div>
+</div><nav class="subnav" aria-label="Secciones del tema"><ul><li><a class="active" href="../pages/transferencia_presentacion.html">Presentación</a></li><li><a class="" href="../pages/transferencia_laboratorio.html">Laboratorio</a></li><li><a class="" href="../pages/transferencia_leccion.html">Lección</a></li><li><a class="" href="../pages/transferencia_bibliografia.html">Bibliografía</a></li></ul></nav><main class="content-wrap" id="contenido">
+<p class="eyebrow">UNIDAD 2</p>
+<h2>Funciones de transferencia de sistemas mecánicos</h2>
+<blockquote class="quote-epigraph">«Todo debe hacerse tan simple como sea posible, pero no más
+simple.»<cite>— Albert Einstein</cite></blockquote>
+<p>La función de transferencia describe la relación entrada-salida de un sistema lineal en el
+dominio de Laplace, independientemente de las condiciones iniciales. Es la herramienta central
+para analizar la estabilidad y la respuesta dinámica de un sistema sin resolver explícitamente su
+ecuación diferencial cada vez.</p>
+
+<h3>Objetivo</h3>
+<p>Familiarizar al estudiante con el modelado y análisis de sistemas mecánicos utilizando
+funciones de transferencia en MATLAB. Se trabaja con un sistema de una entrada y una salida
+(SISO) y otro de dos entradas y dos salidas (MIMO), utilizando las funciones <code>tf</code>,
+<code>pole</code>, <code>zero</code>, <code>dcgain</code>, <code>zpk</code> y <code>pzmap</code>,
+y luego se simulan ambos sistemas en Simscape.</p>
+
+<h3>Requisitos previos</h3>
+<ul>
+  <li>MATLAB con Control System Toolbox y Simscape.</li>
+  <li>Conocimientos básicos de sistemas mecánicos.</li>
+  <li>Conocimientos básicos de MATLAB.</li>
+</ul>
+
+<h3>Video recomendado</h3>
+<div class="video-embed"><iframe src="https://www.youtube.com/embed/mbQuHNg5k8Y" title="Función de transferencia — concepto básico" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe></div>
+<p class="video-credit">Video: <a href="https://www.youtube.com/watch?v=mbQuHNg5k8Y" target="_blank" rel="noopener">Función de transferencia — concepto básico</a></p>
+
+<p>Sigue con el <a href="transferencia_laboratorio.html">laboratorio</a> para construir el modelo
+masa-resorte-amortiguador paso a paso, o repasa la <a href="transferencia_leccion.html">lección</a>
+para el marco teórico.</p>
+</main>
+<footer class="site-footer" id="creditos">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <img class="footer-logo" src="../assets/img/usco-logo-full.png" alt="Universidad Surcolombiana" loading="lazy">
+        <h5>Sistemas Dinámicos</h5>
+        <p>Sitio del curso, elaborado por estudiantes del programa de Ingeniería Electrónica como
+        proyecto final de la asignatura. Contenido con fines académicos.</p>
+      </div>
+      <div>
+        <h5>Unidades</h5>
+        <ul><li><a href="../pages/ecuaciones_presentacion.html">Ecuaciones Diferenciales</a></li><li><a href="../pages/transferencia_presentacion.html">Funciones de Transferencia</a></li><li><a href="../pages/bloques_presentacion.html">Diagramas de Bloques</a></li><li><a href="../pages/espacio_presentacion.html">Espacio de Estados</a></li><li><a href="../pages/cdio_presentacion.html">Proyecto CDIO · Robogol</a></li></ul>
+      </div>
+      <div>
+        <h5>Sitio</h5>
+        <ul>
+          <li><a href="../index.html">Inicio</a></li>
+          <li><a href="../index.html#recursos">Recursos descargables</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      Programa de Ingeniería Electrónica · Curso Sistemas Dinámicos · Proyecto de sitio web de curso.
+    </div>
+  </div>
+</footer>
+<script src="../js/script.js"></script>
+</body>
+</html>

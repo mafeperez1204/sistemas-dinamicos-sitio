@@ -1,0 +1,9 @@
+<svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+<rect width="64" height="64" rx="10" fill="#40100F"/>
+<circle cx="32" cy="32" r="20" fill="none" stroke="#F6F3F1" stroke-width="2"/>
+<path d="M32 12 A20 20 0 0 1 52 32" stroke="#B5232A" stroke-width="4" fill="none"/>
+<path d="M52 32 A20 20 0 0 1 32 52" stroke="#E7B740" stroke-width="4" fill="none"/>
+<path d="M32 52 A20 20 0 0 1 12 32" stroke="#B5232A" stroke-width="4" fill="none"/>
+<path d="M12 32 A20 20 0 0 1 32 12" stroke="#E7B740" stroke-width="4" fill="none"/>
+<text x="32" y="37" font-family="monospace" font-size="12" fill="#F6F3F1" text-anchor="middle">CDIO</text>
+</svg>

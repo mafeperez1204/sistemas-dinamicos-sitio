@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lección · Diagramas de Bloques · Sistemas Dinámicos</title>
+<meta name="description" content="Lección — Construcción y simulación de sistemas eléctricos mediante diagramas de bloques en Simulink.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link rel="icon" href="../assets/img/usco-shield.png" type="image/png">
+<link rel="stylesheet" href="../css/style.css">
+<script>
+  window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] } };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
+</head>
+<body class="">
+<a class="skip-link" href="#contenido">Saltar al contenido</a>
+<header class="site-header">
+  <div class="nav-bar">
+    <a class="brand" href="../index.html">
+      <img src="../assets/img/usco-shield.png" alt="Universidad Surcolombiana">
+      <span>Sistemas Dinámicos<small>Ingeniería Electrónica</small></span>
+    </a>
+    <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false">☰ Menú</button>
+    <nav class="primary-nav" aria-label="Navegación principal">
+      <ul>
+        <li><a class="top-link" href="../index.html">Inicio</a></li>
+        <li class="has-mega">
+          <a class="top-link" href="../index.html#contenido">Contenido ▾</a>
+          <div class="mega-panel"><div class="mega-grid"><div class="mega-col"><h4><img class="mega-icon" src="../assets/img/icon-ode.svg" alt=""> Ecuaciones Diferenciales</h4><ul><li><a href="../pages/ecuaciones_presentacion.html">Presentación</a></li><li><a href="../pages/ecuaciones_laboratorio.html">Laboratorio</a></li><li><a href="../pages/ecuaciones_leccion.html">Lección</a></li><li><a href="../pages/ecuaciones_bibliografia.html">Bibliografía</a></li></ul></div><div class="mega-col"><h4><img class="mega-icon" src="../assets/img/icon-tf.svg" alt=""> Funciones de Transferencia</h4><ul><li><a href="../pages/transferencia_presentacion.html">Presentación</a></li><li><a href="../pages/transferencia_laboratorio.html">Laboratorio</a></li><li><a href="../pages/transferencia_leccion.html">Lección</a></li><li><a href="../pages/transferencia_bibliografia.html">Bibliografía</a></li></ul></div><div class="mega-col"><h4><img class="mega-icon" src="../assets/img/icon-blocks.svg" alt=""> Diagramas de Bloques</h4><ul><li><a href="../pages/bloques_presentacion.html">Presentación</a></li><li><a href="../pages/bloques_laboratorio.html">Laboratorio</a></li><li><a href="../pages/bloques_leccion.html">Lección</a></li><li><a href="../pages/bloques_bibliografia.html">Bibliografía</a></li></ul></div><div class="mega-col"><h4><img class="mega-icon" src="../assets/img/icon-ss.svg" alt=""> Espacio de Estados</h4><ul><li><a href="../pages/espacio_presentacion.html">Presentación</a></li><li><a href="../pages/espacio_laboratorio.html">Laboratorio</a></li><li><a href="../pages/espacio_leccion.html">Lección</a></li><li><a href="../pages/espacio_bibliografia.html">Bibliografía</a></li></ul></div><div class="mega-col"><h4><img class="mega-icon" src="../assets/img/icon-cdio.svg" alt=""> Proyecto CDIO · Robogol</h4><ul><li><a href="../pages/cdio_presentacion.html">Presentación</a></li><li><a href="../pages/cdio_etapas.html">Etapas CDIO</a></li><li><a href="../pages/cdio_cronograma.html">Cronograma</a></li><li><a href="../pages/cdio_reglamento.html">Reglamento</a></li><li><a href="../pages/cdio_bibliografia.html">Bibliografía</a></li></ul></div></div></div>
+        </li>
+        <li><a class="top-link" href="../index.html#recursos">Recursos</a></li>
+        <li><a class="top-link" href="../index.html#creditos">Créditos</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<div class="page-hero">
+  <div class="container">
+    <div class="breadcrumb"><a href="../index.html">Inicio</a> / <a href="../index.html#contenido">Contenido</a> / Lección</div>
+    <h1>Diagramas de Bloques</h1>
+    <p>Construcción y simulación de sistemas eléctricos mediante diagramas de bloques en Simulink.</p>
+  </div>
+</div><nav class="subnav" aria-label="Secciones del tema"><ul><li><a class="" href="../pages/bloques_presentacion.html">Presentación</a></li><li><a class="" href="../pages/bloques_laboratorio.html">Laboratorio</a></li><li><a class="active" href="../pages/bloques_leccion.html">Lección</a></li><li><a class="" href="../pages/bloques_bibliografia.html">Bibliografía</a></li></ul></nav><main class="content-wrap" id="contenido">
+<p class="eyebrow">LECCIÓN</p>
+<h2>Álgebra de diagramas de bloques</h2>
+<p>Un diagrama de bloques se construye con tres elementos básicos: el <strong>bloque</strong>
+(multiplica la señal de entrada por una función de transferencia), el <strong>punto de suma</strong>
+(suma o resta señales) y el <strong>punto de bifurcación</strong> (envía la misma señal a más de un
+destino).</p>
+
+<h3>Reducción de bloques en cascada</h3>
+<div class="formula-box">$$G(s) = G_1(s)\,G_2(s)$$</div>
+<p>Dos bloques conectados en serie equivalen a un único bloque cuya función de transferencia es el
+producto de las funciones individuales.</p>
+
+<h3>Sistemas con realimentación</h3>
+<p>Para un lazo con función directa $G(s)$ y realimentación $H(s)$, la función de transferencia
+equivalente en lazo cerrado es:</p>
+<div class="formula-box">$$\frac{Y(s)}{R(s)} = \frac{G(s)}{1 \pm G(s)H(s)}$$</div>
+<p>con signo negativo para realimentación negativa (la más común en sistemas de control) y positivo
+para realimentación positiva.</p>
+
+<h3>De la ecuación al bloque</h3>
+<p>Cada operación de las ecuaciones dinámicas en el dominio de Laplace —una suma, una ganancia
+constante o una integración ($1/s$)— corresponde directamente a un bloque de Simulink, lo que
+permite pasar de las ecuaciones del sistema a un modelo simulable de forma sistemática.</p>
+
+<div class="quiz-box">
+<p class="quiz-title">PON A PRUEBA LO APRENDIDO</p>
+<h4>Quiz rápido · Diagramas de Bloques</h4>
+
+<div class="quiz-question" data-answer="a" data-correct-msg="Correcto: bloque, punto de suma y punto de bifurcación son los tres elementos básicos." data-wrong-msg="No es correcta. Revisa el primer párrafo de la lección.">
+<p class="quiz-prompt">1. ¿Cuáles son los tres elementos básicos de un diagrama de bloques?</p>
+<ul class="quiz-options">
+<li><button type="button" class="quiz-option" data-option="a">Bloque, punto de suma y punto de bifurcación</button></li>
+<li><button type="button" class="quiz-option" data-option="b">Bloque, integrador y derivador</button></li>
+<li><button type="button" class="quiz-option" data-option="c">Entrada, salida y ganancia</button></li>
+<li><button type="button" class="quiz-option" data-option="d">Polo, cero y ganancia</button></li>
+</ul>
+<p class="quiz-feedback"></p>
+</div>
+
+<div class="quiz-question" data-answer="a" data-correct-msg="Correcto: $G(s) = G_1(s)\,G_2(s)$." data-wrong-msg="No es correcta. Revisa «Reducción de bloques en cascada».">
+<p class="quiz-prompt">2. Dos bloques conectados en cascada equivalen a un único bloque cuya función de transferencia es:</p>
+<ul class="quiz-options">
+<li><button type="button" class="quiz-option" data-option="a">El producto de las funciones individuales</button></li>
+<li><button type="button" class="quiz-option" data-option="b">La suma de las funciones individuales</button></li>
+<li><button type="button" class="quiz-option" data-option="c">El cociente entre ambas funciones</button></li>
+<li><button type="button" class="quiz-option" data-option="d">El promedio de ambas funciones</button></li>
+</ul>
+<p class="quiz-feedback"></p>
+</div>
+
+<div class="quiz-question" data-answer="a" data-correct-msg="Correcto: con realimentación negativa el signo del denominador es positivo." data-wrong-msg="No es correcta. Revisa «Sistemas con realimentación».">
+<p class="quiz-prompt">3. En un lazo con realimentación negativa, la función de transferencia en lazo cerrado es:</p>
+<ul class="quiz-options">
+<li><button type="button" class="quiz-option" data-option="a">$\dfrac{G(s)}{1 + G(s)H(s)}$</button></li>
+<li><button type="button" class="quiz-option" data-option="b">$\dfrac{G(s)}{1 - G(s)H(s)}$</button></li>
+<li><button type="button" class="quiz-option" data-option="c">$G(s)H(s)$</button></li>
+<li><button type="button" class="quiz-option" data-option="d">$\dfrac{1}{G(s)H(s)}$</button></li>
+</ul>
+<p class="quiz-feedback"></p>
+</div>
+</div>
+</main>
+<footer class="site-footer" id="creditos">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <img class="footer-logo" src="../assets/img/usco-logo-full.png" alt="Universidad Surcolombiana" loading="lazy">
+        <h5>Sistemas Dinámicos</h5>
+        <p>Sitio del curso, elaborado por estudiantes del programa de Ingeniería Electrónica como
+        proyecto final de la asignatura. Contenido con fines académicos.</p>
+      </div>
+      <div>
+        <h5>Unidades</h5>
+        <ul><li><a href="../pages/ecuaciones_presentacion.html">Ecuaciones Diferenciales</a></li><li><a href="../pages/transferencia_presentacion.html">Funciones de Transferencia</a></li><li><a href="../pages/bloques_presentacion.html">Diagramas de Bloques</a></li><li><a href="../pages/espacio_presentacion.html">Espacio de Estados</a></li><li><a href="../pages/cdio_presentacion.html">Proyecto CDIO · Robogol</a></li></ul>
+      </div>
+      <div>
+        <h5>Sitio</h5>
+        <ul>
+          <li><a href="../index.html">Inicio</a></li>
+          <li><a href="../index.html#recursos">Recursos descargables</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      Programa de Ingeniería Electrónica · Curso Sistemas Dinámicos · Proyecto de sitio web de curso.
+    </div>
+  </div>
+</footer>
+<script src="../js/script.js"></script>
+</body>
+</html>
